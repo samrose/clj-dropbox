@@ -1,6 +1,5 @@
 {:deps  
   {org.clojure/clojure #:mvn{:version "1.10.0"},
-   com.dropbox.core/dropbox-core-sdk {:mvn/version "3.1.4"},
-   samrose/clj-mw{:git/url "https://github.com/samrose/clj-mw", :sha "630a0604540659a29e58426277d2be5acabda394"},
-   juxt/crux-core {:mvn/version "20.07-1.10.0-beta"}}}
+   com.dropbox.core/dropbox-core-sdk {:mvn/version "3.1.4"},}}
+   
                      
