@@ -13,12 +13,12 @@
     (.exists (clojure.java.io/as-file dir-settings)) (read-string (slurp dir-settings))
     :else (do (println "Using empty settings. Please set settings.edn"){})))
 
-(defn dbxlist [path]
-  (let [config (.build (DbxRequestConfig/newBuilder "cdasdata"))
+(defn dbxlist [app path]
+  (let [config (.build (DbxRequestConfig/newBuilder app))
          client (DbxClientV2. config (-> settings :dropbox :accessToken))
          files (.files client)
          res (.listFolder files path)
          _list (seq (.getEntries res))]
          
     (println _list)))
-(dbxlist "/cdas21research")
+(dbxlist "cdasdata" "/cdas21research")
