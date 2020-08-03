@@ -1,16 +1,18 @@
-{ pkgs ? import ./pkgs.nix {} }:
+{ pkgs ? import ./pkgs.nix { } }:
 let
-  clj2nix = pkgs.callPackage (pkgs.fetchFromGitHub {
-    owner = "hlolli";
-    repo = "clj2nix";
-    rev = "de55ca72391bdadcdcbdf40337425d94e55162cb";
-    sha256 = "0bsq0b0plh6957zy9gl2g6hq8nhjkln4sn9lgf3yqbwz8i1z5a4a";
-  }) {};
+  clj2nix = pkgs.callPackage
+    (pkgs.fetchFromGitHub {
+      owner = "hlolli";
+      repo = "clj2nix";
+      rev = "3ab3480a25e850b35d1f532a5e4e7b3202232383";
+      sha256 = "1lry026mlpxp1j563qs13nhxf37i2zpl7lh0lgfdwc44afybqka6";
+    }) { };
   cljdeps = pkgs.callPackage ./deps.nix { };
   classp = cljdeps.makeClasspaths { };
   execName = "dbx";
 
-in pkgs.stdenv.mkDerivation {
+in
+pkgs.stdenv.mkDerivation {
   name = execName;
 
   nativeBuildInputs = [ clj2nix pkgs.jre pkgs.makeWrapper pkgs.clojure pkgs.nix-bundle ];
