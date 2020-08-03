@@ -12,3 +12,4 @@ pom.xml.asc
 .hg/
 settings.edn
 .cpcache
+result
