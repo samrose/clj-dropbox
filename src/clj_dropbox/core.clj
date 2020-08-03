@@ -21,3 +21,4 @@
          _list (seq (.getEntries res))]
          
     (println _list)))
+(dbxlist "/cdas21research")

@@ -13,7 +13,7 @@ let
 in pkgs.stdenv.mkDerivation {
   name = execName;
 
-  nativeBuildInputs = [ clj2nix pkgs.jdk pkgs.makeWrapper pkgs.clojure pkgs.nix-bundle ];
+  nativeBuildInputs = [ clj2nix pkgs.jre pkgs.makeWrapper pkgs.clojure pkgs.nix-bundle ];
 
   buildInputs = map (x: x.path) cljdeps.packages;
 
@@ -26,7 +26,7 @@ in pkgs.stdenv.mkDerivation {
     mkdir -p $out/bin
     mkdir -p $out/share/clojure
     cp clj_dropbox/core.clj $out/share/clojure/core.clj
-    makeWrapper ${pkgs.jdk}/bin/java $out/bin/${execName} \
+    makeWrapper ${pkgs.jre}/bin/java $out/bin/${execName} \
       --add-flags "-cp ${classp}:${pkgs.clojure}/libexec/* clojure.main $out/share/clojure/core.clj"
   '';
 }
