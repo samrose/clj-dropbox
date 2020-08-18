@@ -17,9 +17,11 @@ let
       customRC = ''
         set title
         set nu
+        let g:rainbow_active = 1
       '';
       packages.package.start = with vimPlugins; [
         fzf
+        rainbow
         vim-clojure-highlight
         vim-clojure-static
         vim-fireplace
